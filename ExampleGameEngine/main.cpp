@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	int frameTime;
 
 	game = new Game();
-	game->init("HardyEngine", 800, 600, false);
+	game->init("HardyEngine", 800, 640, false);
 
 	while (game->running())
 	{

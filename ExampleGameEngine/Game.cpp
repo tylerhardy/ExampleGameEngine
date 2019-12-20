@@ -4,6 +4,7 @@
 
 GameObject* player;
 GameObject* enemie;
+SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game()
 {}
@@ -29,18 +30,18 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 			std::cout << "Window created!" << std::endl;
 		}
 
-		renderer = SDL_CreateRenderer(window, -1, 0);
-		if (renderer)
+		Game::renderer = SDL_CreateRenderer(window, -1, 0);
+		if (Game::renderer)
 		{
-			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+			SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
 			std::cout << "Renderer created!" << std::endl;
 		}
 
 		isRunning = true;
 	}
 
-	player = new GameObject("assets/player.png", renderer, 0, 0);
-	enemie = new GameObject("assets/enemie.png", renderer, 50, 50);
+	player = new GameObject("assets/player.png", 0, 0);
+	enemie = new GameObject("assets/enemie.png", 50, 50);
 
 }
 

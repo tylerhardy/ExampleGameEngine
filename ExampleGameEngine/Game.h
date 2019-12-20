@@ -19,9 +19,10 @@ public:
 	void render();							// Render to screen
 	void clean();							// Memory Management
 
+	static SDL_Renderer* renderer;
+
 private:
 	int cnt = 0;
 	bool isRunning;							// Ask the game class if it is running, if true it will run the loop again
 	SDL_Window* window;
-	SDL_Renderer* renderer;
 };
