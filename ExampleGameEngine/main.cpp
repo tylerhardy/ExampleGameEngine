@@ -1,26 +1,21 @@
-#include "SDL.h"
-#include <iostream>
-using namespace std;
+#include "Game.h"
+
+
+Game* game = nullptr;
 
 int main(int argc, char* argv[])
 {
-	cout << "Window Initialization..." << endl;
+	game = new Game();
+	game->init("HardyEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
-	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_Window* window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+	while (game->running())
+	{
+		game->handleEvents();		// handle any user inputs
+		game->update();				// update all object eg. positions etc.
+		game->render();				// render changes to the display
+	}
 
-	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-
-	SDL_RenderClear(renderer);
-
-	SDL_RenderPresent(renderer);
-
-	SDL_Delay(3000);
-	SDL_DestroyWindow(window);
-	SDL_Quit();
-	
-	cout << "Window Initialization done" << endl;
+	game->clean();
 
 	return 0;
 }
