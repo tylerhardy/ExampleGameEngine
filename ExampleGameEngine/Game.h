@@ -1,17 +1,17 @@
 #pragma once
-#ifndef Game_h
-#define Game_h
 
 #include "SDL.h"
+#include "SDL_image.h"
 #include <iostream>
 
 class Game
 {
+
 public:
 	Game();
 	~Game();
 
-	void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen); // Constructor
+	void init(const char* title, int width, int height, bool fullscreen); // Constructor
 
 	void handleEvents();
 	void update();							// Go through game objects and update them 
@@ -25,4 +25,3 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 };
-#endif // !Game_h
